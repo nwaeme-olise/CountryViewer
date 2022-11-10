@@ -2,4 +2,5 @@
     <string name="app_name">CountryViewer</string>
 
     <string name="light_mode">Light Mode</string>
+    <string name="toolbar_title">Explore</string>
 </resources>

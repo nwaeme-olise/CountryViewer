@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/countryListFragment"
         android:name="com.olisemeka.countryviewer.ui.countrylist.CountryListFragment"
-        android:label="fragment_country_list"
+        android:label="@string/toolbar_title"
         tools:layout="@layout/fragment_country_list" >
         <action
             android:id="@+id/action_countryListFragment_to_countryDetailsFragment"

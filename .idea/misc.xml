@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/dark_mode.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/filter.xml" value="0.1805" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/ic_baseline_dark_mode_24.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/ic_baseline_light_24.xml" value="0.1905" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/language.xml" value="0.1935" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/light_mode-48px.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/light_mode.xml" value="0.1895" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/drawable/rectangle.xml" value="0.15" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/layout/fragment_country_details.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/CountryViewer/app/src/main/res/layout/fragment_country_list.xml" value="0.25" />
