@@ -30,10 +30,10 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply{
             val country = getItem(position)
-            tvCountry.text = country.name.official
-            tvCapital.text = country.capital[0]
+            tvCountry.text = country.name?.common ?: ""
+            tvCapital.text = country.capital?.get(0) ?: ""
             Glide.with(context)
-                .load(country.flags.svg)
+                .load(country.flags?.png)
                 .centerCrop()
                 .transform(RoundedCorners(20))
                 .into(ivCountry)
@@ -43,7 +43,7 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
 
 object CountryDiffCallback: DiffUtil.ItemCallback<CountryData>() {
     override fun areItemsTheSame(oldItem: CountryData, newItem: CountryData): Boolean {
-        return oldItem.name.official == newItem.name.official
+        return oldItem.name?.official == newItem.name?.official
     }
 
     override fun areContentsTheSame(oldItem: CountryData, newItem: CountryData): Boolean {

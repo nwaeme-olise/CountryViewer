@@ -11,8 +11,8 @@ class CountryDataViewModel(val countryDataRepository: CountryDataRepository): Vi
         getCountryDataResults()
     }
 
-    private var _countryDataResults = MutableLiveData<Resource<CountryData>>()
-    val countryDataResults: LiveData<Resource<CountryData>> get() = _countryDataResults
+    private var _countryDataResults = MutableLiveData<Resource<List<CountryData>>>()
+    val countryDataResults: LiveData<Resource<List<CountryData>>> get() = _countryDataResults
 
     private fun getCountryDataResults() = viewModelScope.launch {
         val response = countryDataRepository.getCountryDataResults()
