@@ -34,8 +34,7 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
             tvCapital.text = country.capital?.get(0) ?: ""
             Glide.with(context)
                 .load(country.flags?.png)
-                .centerCrop()
-                .transform(RoundedCorners(20))
+                .transform(RoundedCorners(7))
                 .into(ivCountry)
         }
     }
