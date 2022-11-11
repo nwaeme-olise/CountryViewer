@@ -18,5 +18,9 @@
         android:id="@+id/countryDetailsFragment"
         android:name="com.olisemeka.countryviewer.ui.countrydetails.CountryDetailsFragment"
         android:label="fragment_country_details"
-        tools:layout="@layout/fragment_country_details" />
+        tools:layout="@layout/fragment_country_details" >
+        <argument
+            android:name="itemPosition"
+            app:argType="integer" />
+    </fragment>
 </navigation>

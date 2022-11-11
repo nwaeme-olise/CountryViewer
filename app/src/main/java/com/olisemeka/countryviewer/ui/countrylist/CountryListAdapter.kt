@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +22,14 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
         val ivCountry = binding.ivCountry
         val tvCountry = binding.tvCountry
         val tvCapital = binding.tvCapital
+        var itemPosition = 0
+
+        init{
+            binding.root.setOnClickListener{ view ->
+                val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailsFragment(itemPosition)
+                view.findNavController().navigate(action)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,6 +46,7 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
                 .transform(RoundedCorners(7))
                 .into(ivCountry)
         }
+        holder.itemPosition = position
     }
 }
 
