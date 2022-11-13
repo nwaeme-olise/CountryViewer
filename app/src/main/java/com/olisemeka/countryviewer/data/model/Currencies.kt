@@ -1,5 +1,6 @@
 package com.olisemeka.countryviewer.data.model
 
 data class Currencies(
-    val BBD: BBD?
+    val name: String?,
+    val symbol: String?
 )
