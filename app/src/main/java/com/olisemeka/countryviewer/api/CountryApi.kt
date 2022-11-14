@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface CountryApi {
     @GET("all")
-    suspend fun getCountryDataResults(): Response<ArrayList<CountryData>>
+    suspend fun getCountryDataResults(): Response<MutableList<CountryData>>
 }

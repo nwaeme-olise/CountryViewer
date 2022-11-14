@@ -21,6 +21,12 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class CountryListAdapter(private val context: Context): ListAdapter<CountryData, CountryListAdapter.ViewHolder>(CountryDiffCallback) {
+    private var countriesList = mutableListOf<CountryData>()
+
+    fun setData(countriesList: MutableList<CountryData>){
+        this.countriesList = countriesList!!
+        submitList(countriesList)
+    }
 
     class ViewHolder(val binding: ListItemCountryBinding) : RecyclerView.ViewHolder(binding.root){
         val ivCountry = binding.ivCountry
@@ -52,6 +58,34 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
         }
         holder.itemPosition = position
     }
+
+    fun getFilter(): Filter{
+        return countryFilter
+    }
+
+    private val countryFilter = object: Filter(){
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList = mutableListOf<CountryData>()
+            if (constraint == null || constraint.isEmpty()){
+                filteredList.addAll(countriesList)
+            }else{
+                val query = constraint.toString().trim().lowercase()
+                countriesList.forEach{
+                    if ((it.name?.common)?.lowercase()?.contains(query) == true){
+                        filteredList.add(it)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            submitList(results?.values as MutableList<CountryData>)
+        }
+
+    }
 }
 
 object CountryDiffCallback: DiffUtil.ItemCallback<CountryData>() {
@@ -64,3 +98,4 @@ object CountryDiffCallback: DiffUtil.ItemCallback<CountryData>() {
     }
 
 }
+

@@ -78,13 +78,25 @@ class CountryListFragment : Fragment() {
             }
             if (response.isSuccessful && response.body() != null){
                 val body = response.body()!!
-                val sortedBody = body.sortedBy { it.name?.common }
-                adapter.submitList(sortedBody)
+                val sortedBody = (body.sortedBy { it.name?.common }).toMutableList()
+                adapter.setData(sortedBody)
             }
             binding.progressBar.isVisible = false
         }
 
 
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapter.getFilter().filter(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.getFilter().filter(newText)
+                return true
+            }
+
+        })
 
     }
 
