@@ -18,7 +18,8 @@ class CountryDataViewModel(val countryDataRepository: CountryDataRepository): Vi
     fun getCountryDataResults() = viewModelScope.launch {
         val response = countryDataRepository.getCountryDataResults()
         if (response.isSuccessful && response.body() != null){
-            _countryDataResults.postValue(response.body())
+            val sortedBody = response.body()!!.sortedBy { it.name?.common }
+            _countryDataResults.postValue(sortedBody)
         }
     }
 }

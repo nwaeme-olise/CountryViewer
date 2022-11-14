@@ -22,5 +22,8 @@
         <argument
             android:name="itemPosition"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_countryDetailsFragment_to_countryListFragment"
+            app:destination="@id/countryListFragment" />
     </fragment>
 </navigation>

@@ -17,4 +17,21 @@
         <item name="android:textColor">#1C1917</item>
         <item name="android:textSize">15sp</item>
     </style>
+
+    <style name="DarkCountryDetailsText">
+        <item name="android:fontFamily">@font/axiforma_black</item>
+        <item name="android:textColor">#F2F4F7</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="DarkCountryDetailsTextView">
+    <item name="android:fontFamily">@font/axiforma_regular</item>
+    <item name="android:textColor">#F2F4F7</item>
+    <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="SearchViewText">
+        <item name="android:fontFamily">@font/axiforma_regular</item>
+
+    </style>
 </resources>

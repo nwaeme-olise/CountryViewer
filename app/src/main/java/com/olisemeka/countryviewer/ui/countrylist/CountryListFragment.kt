@@ -1,11 +1,15 @@
 package com.olisemeka.countryviewer.ui.countrylist
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -13,7 +17,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.olisemeka.countryviewer.R
 import com.olisemeka.countryviewer.api.RetrofitInstance
+import com.olisemeka.countryviewer.data.model.CountryData
 import com.olisemeka.countryviewer.data.repository.CountryDataRepository
 import com.olisemeka.countryviewer.databinding.FragmentCountryListBinding
 import com.olisemeka.countryviewer.ui.CountryDataViewModel
@@ -41,30 +47,17 @@ class CountryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewModel: CountryDataViewModel by activityViewModels { CountryDataViewModelProviderFactory(countryDataRepository) }
-     
+
         binding.rvCountries.adapter = adapter
-        //binding.progressBar.isVisible = true
-//
-//        viewModel.countryDataResults.observe(viewLifecycleOwner, Observer { response ->
-//            when(response){
-//                is Resource.Success -> {
-//                    binding.progressBar.isVisible = false
-//                    response.data?.let { adapter.submitList(it) }
-//                }
-//
-//                is Resource.Loading -> {
-//                    binding.progressBar.isVisible = true
-//                }
-//
-//                is Resource.Error -> {
-//                    binding.progressBar.isVisible = false
-//                }
-//
-//                else -> {
-//                    binding.progressBar.isVisible = false
-//                }
-//            }
-//        })
+        binding.toolbar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.menu_item_light_mode -> switchDisplayMode()
+                R.id.menu_item_dark_mode -> switchDisplayMode()
+            }
+            true
+        }
+
+
         lifecycleScope.launchWhenCreated {
             binding.progressBar.isVisible = true
             val response = try{
@@ -85,13 +78,24 @@ class CountryListFragment : Fragment() {
             }
             if (response.isSuccessful && response.body() != null){
                 val body = response.body()!!
-                adapter.submitList(body)
+                val sortedBody = body.sortedBy { it.name?.common }
+                adapter.submitList(sortedBody)
             }
             binding.progressBar.isVisible = false
         }
 
 
 
+    }
+
+    private fun switchDisplayMode() {
+        val isNightTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when (isNightTheme) {
+            Configuration.UI_MODE_NIGHT_YES ->
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            Configuration.UI_MODE_NIGHT_NO ->
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 
     override fun onDestroy() {

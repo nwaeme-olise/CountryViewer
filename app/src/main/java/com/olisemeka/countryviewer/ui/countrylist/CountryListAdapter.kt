@@ -4,9 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.olisemeka.countryviewer.R
 import com.olisemeka.countryviewer.data.model.CountryData
 import com.olisemeka.countryviewer.databinding.ListItemCountryBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CountryListAdapter(private val context: Context): ListAdapter<CountryData, CountryListAdapter.ViewHolder>(CountryDiffCallback) {
 
