@@ -1,5 +1,9 @@
 package com.olisemeka.countryviewer.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Translations(
     val ara: Ara?,
     val bre: Bre?,
@@ -25,4 +29,4 @@ data class Translations(
     val tur: Tur?,
     val urd: Urd?,
     val zho: Zho?
-)
+): Parcelable

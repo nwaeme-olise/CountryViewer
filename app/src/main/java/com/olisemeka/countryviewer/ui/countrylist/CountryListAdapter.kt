@@ -32,11 +32,11 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
         val ivCountry = binding.ivCountry
         val tvCountry = binding.tvCountry
         val tvCapital = binding.tvCapital
-        var itemPosition = 0
+        var country: CountryData? = null
 
         init{
             binding.root.setOnClickListener{ view ->
-                val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailsFragment(itemPosition)
+                val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailsFragment(country!!)
                 view.findNavController().navigate(action)
             }
         }
@@ -47,16 +47,18 @@ class CountryListAdapter(private val context: Context): ListAdapter<CountryData,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val country = getItem(position)
+        holder.country = country
         holder.binding.apply{
-            val country = getItem(position)
             tvCountry.text = country.name?.common ?: ""
             tvCapital.text = country.capital?.get(0) ?: ""
             Glide.with(context)
                 .load(country.flags?.png)
                 .transform(RoundedCorners(7))
                 .into(ivCountry)
+
         }
-        holder.itemPosition = position
+
     }
 
     fun getFilter(): Filter{

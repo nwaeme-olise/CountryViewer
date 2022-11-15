@@ -1,7 +1,10 @@
 package com.olisemeka.countryviewer.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Languages(
     val afr: String?,
     @SerializedName("amh")
@@ -308,4 +311,4 @@ data class Languages(
     val zib: String?,
     @SerializedName("zul")
     val zul: String?
-)
+): Parcelable

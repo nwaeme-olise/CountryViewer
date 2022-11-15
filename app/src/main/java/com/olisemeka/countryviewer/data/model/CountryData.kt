@@ -1,5 +1,9 @@
 package com.olisemeka.countryviewer.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class CountryData(
     val altSpellings: List<String>?,
     val area: Double?,
@@ -34,4 +38,4 @@ data class CountryData(
     val tld: List<String>?,
     val translations: Translations?,
     val unMember: Boolean?
-)
+) : Parcelable

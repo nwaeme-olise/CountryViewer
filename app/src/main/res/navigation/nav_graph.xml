@@ -19,11 +19,11 @@
         android:name="com.olisemeka.countryviewer.ui.countrydetails.CountryDetailsFragment"
         android:label="fragment_country_details"
         tools:layout="@layout/fragment_country_details" >
-        <argument
-            android:name="itemPosition"
-            app:argType="integer" />
         <action
             android:id="@+id/action_countryDetailsFragment_to_countryListFragment"
             app:destination="@id/countryListFragment" />
+        <argument
+            android:name="country"
+            app:argType="com.olisemeka.countryviewer.data.model.CountryData" />
     </fragment>
 </navigation>
